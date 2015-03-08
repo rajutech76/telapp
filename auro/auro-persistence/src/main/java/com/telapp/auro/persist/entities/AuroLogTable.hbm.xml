@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 Mar, 2015 9:46:02 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.telapp.telquiz.entity.AuroLogTable" table="Auro_log_table" catalog="telapp_auro">
+        <id name="auroLogId" type="java.lang.Integer">
+            <column name="auro_log_id" />
+            <generator class="identity" />
+        </id>
+        <property name="deviceName" type="string">
+            <column name="device_name" length="45" />
+        </property>
+        <property name="deviceMacId" type="string">
+            <column name="device_mac_id" length="250" />
+        </property>
+        <property name="slotname" type="string">
+            <column name="slotname" length="45" />
+        </property>
+        <property name="slotstatus" type="java.lang.Integer">
+            <column name="slotstatus" />
+        </property>
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 Mar, 2015 9:46:02 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.telapp.telquiz.entity.AuroDeviceReg" table="auro_device_reg" catalog="telapp_auro">
+        <id name="idauroDeviceReg" type="java.lang.Integer">
+            <column name="idauro_device_reg" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="auroSlotReg" class="com.telapp.telquiz.entity.AuroSlotReg" fetch="select">
+            <column name="slot_Id" />
+        </many-to-one>
+        <property name="deviceName" type="string">
+            <column name="device_name" length="45" />
+        </property>
+        <property name="deviceMacId" type="string">
+            <column name="device_mac_id" length="250" unique="true" />
+        </property>
+        <set name="auroSlotStatisticses" table="auro_slot_statistics" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="device_id" unique="true" />
+            </key>
+            <one-to-many class="com.telapp.telquiz.entity.AuroSlotStatistics" />
+        </set>
+    </class>
+</hibernate-mapping>

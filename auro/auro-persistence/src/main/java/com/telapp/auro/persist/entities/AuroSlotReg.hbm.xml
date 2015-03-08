@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 Mar, 2015 9:46:02 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.telapp.telquiz.entity.AuroSlotReg" table="auro_slot_reg" catalog="telapp_auro">
+        <id name="idauroSlotReg" type="java.lang.Integer">
+            <column name="idauro_slot_reg" />
+            <generator class="identity" />
+        </id>
+        <property name="slotName" type="string">
+            <column name="slot_name" length="45" />
+        </property>
+        <property name="slotLocation" type="string">
+            <column name="slot_location" length="250" />
+        </property>
+        <property name="slotDescription" type="string">
+            <column name="slot_description" length="45" />
+        </property>
+        <set name="auroDeviceRegs" table="auro_device_reg" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="slot_Id" />
+            </key>
+            <one-to-many class="com.telapp.telquiz.entity.AuroDeviceReg" />
+        </set>
+    </class>
+</hibernate-mapping>
