@@ -12,7 +12,10 @@
            http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="com.telapp.auro.persist.dao" />
-
+	
+<!-- org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
+	org.springframework.orm.jpa.LocalEntityManagerFactoryBean
+ -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceXmlLocation" value="persistence.xml" />

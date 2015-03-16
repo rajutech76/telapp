@@ -29,8 +29,8 @@ public class AuroLogTest {
 		AuroLogTableHome auroLog = (AuroLogTableHome)context.getBean("auroLog");
 		
 		
-		AuroLogTable table =new AuroLogTable("testdevicename", "testmacId", "slotname1",
-				0,new Date(System.currentTimeMillis()));
+		//AuroLogTable table =new AuroLogTable("testdevicename", "testmacId", "slotname1",
+			//	0,new Date(System.currentTimeMillis()));
 		
 		//auroLog.persist(table);
 		
