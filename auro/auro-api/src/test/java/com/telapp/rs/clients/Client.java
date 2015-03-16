@@ -36,8 +36,11 @@ public final class Client {
 
     private Client() {
     }
+    //local test
+    //private static String restUrl ="http://localhost:8080/auroservice/services/user/";
     
-    private static String restUrl ="http://localhost:8080/auroservice/services/user/";
+    //cloud test
+    private static String restUrl ="http://auroservice-telappauro.rhcloud.com/auroservice/services/user/";
 
     public static void main(String args[]) throws Exception {
 

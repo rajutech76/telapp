@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.telapp.auro.rs;
+package com.telapp.auro.beans;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
