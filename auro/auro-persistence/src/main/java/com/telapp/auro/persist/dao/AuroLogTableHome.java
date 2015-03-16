@@ -8,6 +8,9 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.telapp.auro.persist.entities.AuroLogTable;
 
@@ -16,7 +19,8 @@ import com.telapp.auro.persist.entities.AuroLogTable;
  * @see com.telapp.telquiz.entity.AuroLogTable
  * @author Hibernate Tools
  */
-
+@Repository("auroLog")
+@Transactional(propagation=Propagation.REQUIRED)
 public class AuroLogTableHome {
 
 	private static final Log log = LogFactory.getLog(AuroLogTableHome.class);

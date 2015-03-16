@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package com.telapp.rs.clients;
+package com.telapp.auro.rs.clients;
 
 import javax.ws.rs.core.Response;
 

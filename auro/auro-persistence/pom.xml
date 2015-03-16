@@ -16,9 +16,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<packaging>jar</packaging>
 		<skiptest>true</skiptest>
-		<org.springframework.version>3.2.1.RELEASE</org.springframework.version>
+		<org.springframework.version>3.2.8.RELEASE</org.springframework.version>
 	    <org.hibernate.version>4.1.5.Final</org.hibernate.version>
 	    <!-- 4.3.1 hibernate latest version -->
+	    
+	    
 	</properties>
 	
 	 <repositories>
@@ -243,7 +245,8 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
-				<version>3.6.3.Final</version>
+				<!-- version>3.6.3.Final</version-->
+				<version>${org.hibernate.version}</version>
 			</dependency>
 			
 			<!-- JPA  Lib -->
@@ -251,7 +254,8 @@
 			<dependency>
 	            <groupId>org.hibernate</groupId>
 	            <artifactId>hibernate-entitymanager</artifactId>
-	            <version>3.6.9.Final</version>
+	            <!-- version>3.6.9.Final</version-->
+	            <version>${org.hibernate.version}</version>
 	        </dependency>
 	        <dependency>
 	            <groupId>org.hibernate.javax.persistence</groupId>
@@ -263,7 +267,7 @@
 			<dependency>
 	            <groupId>org.hibernate</groupId>
 	            <artifactId>hibernate-entitymanager</artifactId>
-	            <version>3.6.9.Final</version>
+	            <version>${org.hibernate.version}</version>
 	        </dependency>
 	        <dependency>
 	            <groupId>org.hibernate.javax.persistence</groupId>

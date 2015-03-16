@@ -20,8 +20,8 @@
   </developers>
   
    <properties>
-	
-    <org.spring.security.version>3.1.2.RELEASE</org.spring.security.version>
+	<auro.version>1.0</auro.version>
+    <org.spring.security.version>3.2.8.RELEASE</org.spring.security.version>
     <activemq-version>5.9.0</activemq-version>
     <camel-version>2.13.0</camel-version>
     <cxf-version>2.7.10</cxf-version>
@@ -45,6 +45,13 @@
 
 
   <dependencies>
+  
+  
+  		<dependency>
+			<groupId>com.telapp.auro</groupId>
+			<artifactId>auro-persistence</artifactId>
+			<version>${auro.version}</version>
+		</dependency>
   
 	 <dependency>
             <groupId>javax</groupId>
