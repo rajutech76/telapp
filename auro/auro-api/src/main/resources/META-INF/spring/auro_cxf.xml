@@ -11,9 +11,13 @@
   <import resource="classpath:META-INF/cxf/cxf.xml"/>
   <!-- import resource="classpath:META-INF/cxf/cxf-extension-jaxrs-binding.xml"/-->
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+  
+  <import resource="classpath:META-INF/spring/amq_broker.xml"/>
+  <import resource="classpath:META-INF/spring/camel-context.xml"/>
+  
   <jaxrs:server address="/" id="connectionService">
    <jaxrs:serviceBeans>
-         <bean class="com.telapp.auro.rs.UserServiceImpl" id="userService"/>
+         <bean class="com.telapp.auro.service.UserServiceImpl" id="userService"/>
    </jaxrs:serviceBeans>
    <jaxrs:extensionMappings>
     <entry key="xml" value="application/xml"/>
