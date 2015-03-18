@@ -154,13 +154,18 @@ class Publisher {
     			//System.out.println(sb.toString());
     	 
     		} catch (UnknownHostException e) {
+    			 sb = new StringBuilder("UN-KNOWN-HOST");
     	 
     			e.printStackTrace();
     	 
     		} catch (SocketException e){
+    			 sb = new StringBuilder("UN-KNOWN-HOST");
     	 
     			e.printStackTrace();
     	 
+    		}catch(Exception exp){
+    			 sb = new StringBuilder("UN-KNOWN-HOST");
+    			
     		}
     	 
     	   return sb.toString();

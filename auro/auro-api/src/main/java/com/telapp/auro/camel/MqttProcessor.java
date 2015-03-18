@@ -19,10 +19,12 @@ public class MqttProcessor implements  Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		
-		log.info("Executing the method process : "+exchange.getIn().getBody()
+		String body = exchange.getIn().getBody().toString();
+		
+		log.info("Executing the method process : "+body
 				+" header :"+exchange.getIn().getHeaders());
 		
-		String body =(String) exchange.getIn().getBody();
+		
 		
 		MqttRequest mqTT =convertToMQTT(body);
 		saveData(mqTT);
@@ -31,18 +33,21 @@ public class MqttProcessor implements  Processor {
 	}
 	
 	private void saveData(MqttRequest mqTT){
+		log.info("executing save data :"+mqTT);
 		AuroLogTable auroTable = AuroConverter.convertToAuroConverter(mqTT);
-		//auroLog.persist(auroTable);
+		auroLog.persist(auroTable);
 		
 	}
 	
 	
 	private MqttRequest convertToMQTT(String body){
 		
+		log.info("body : "+body);
+		
 		MqttRequest mqTT =new MqttRequest();
 		
 		String str[] =body.split("_");
-		if(str!=null && str.length>3){
+		if(str!=null ){
 		
 			mqTT.setDeviceName(str[0]);
 			mqTT.setDeviceMacId(str[1]);
