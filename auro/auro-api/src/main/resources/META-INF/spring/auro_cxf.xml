@@ -13,7 +13,7 @@
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
   
   <import resource="classpath:META-INF/spring/amq_broker.xml"/>
-  <import resource="classpath:META-INF/spring/camel-context.xml"/>
+  <import resource="classpath:META-INF/spring/auro-context.xml"/>
   
   <jaxrs:server address="/" id="connectionService">
    <jaxrs:serviceBeans>

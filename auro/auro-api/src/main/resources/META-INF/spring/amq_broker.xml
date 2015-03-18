@@ -40,7 +40,7 @@
 			<!-- tcp for external communication -->
 			<transportConnector name="tcp" uri="tcp://0.0.0.0:61616"/>
 			<!--  MQTT Transprot  -->
-			 <transportConnector name ="mqtt" uri="mqtt://localhost:1883"/>
+			 <transportConnector name ="mqtt" uri="mqtt://0.0.0.0:1883"/>
 		</transportConnectors>
 
 	</broker>
