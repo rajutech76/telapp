@@ -21,8 +21,10 @@
         </camel:route>
     </camel:camelContext-->
     
-    
-   <bean id="mqttRoute" class="com.telapp.auro.camel.MqttRouteBuilder"/>
+   <bean id ="mqTTProcessor" class="com.telapp.auro.camel.MqttProcessor"/>
+   <bean id="mqttRoute" class="com.telapp.auro.camel.MqttRouteBuilder">
+   	 <constructor-arg ref="mqTTProcessor"/>
+   </bean>
      	
    	<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
 		<!-- vm://auroBroker is the vm protocol, and auroBroker is the broker name -->

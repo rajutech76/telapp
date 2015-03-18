@@ -11,7 +11,7 @@
   <import resource="classpath:META-INF/cxf/cxf.xml"/>
   <!-- import resource="classpath:META-INF/cxf/cxf-extension-jaxrs-binding.xml"/-->
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
-  
+  <import resource="classpath:auro_persistance.xml"/>
   <import resource="classpath:META-INF/spring/amq_broker.xml"/>
   <import resource="classpath:META-INF/spring/auro-context.xml"/>
   

@@ -14,9 +14,14 @@ import org.apache.commons.logging.LogFactory;
 public class MqttRouteBuilder extends RouteBuilder{
 	
 	private static final Log log = LogFactory.getLog(MqttRouteBuilder.class);
+	private MqttProcessor mqTTProcessor;
 	
 	public MqttRouteBuilder(){
 		
+	}
+	
+	public MqttRouteBuilder(MqttProcessor mqTTProcessor){
+		this.mqTTProcessor = mqTTProcessor ;
 	}
 
 	@Override
@@ -24,10 +29,11 @@ public class MqttRouteBuilder extends RouteBuilder{
 	{
 		log.info("Executing the method configure");
 		
-		from("mqtt:bar?subscribeTopicName=auro/mqtt/topic").
+		from("mqtt:auro?subscribeTopicName=auro/mqtt/topic").
 		transform(body().convertToString()).
 		to("log:output").
-		to("mock:result");
+		process(mqTTProcessor);
+		
 		
 		log.info("Finished executing the method configure ");
 		

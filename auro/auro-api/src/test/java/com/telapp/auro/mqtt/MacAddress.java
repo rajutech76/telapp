@@ -10,8 +10,22 @@ public class MacAddress {
 	
 	public static void main(String args[]) throws Exception
 	{
-		String str = getMacId();
-		System.out.println("macid:"+str);
+		//String str = getMacId();
+		//System.out.println("macid:"+str);
+		splitString();
+	}
+	
+	private static void splitString(){
+		
+		String str="TestDevice-1_00-1A-73-38-3F-C1_sensorstatus_8";
+		
+		String[] str1 =str.split("_");
+		
+		for(String s:str1){
+			System.out.println(s);
+		}
+		
+		
 	}
 	
 	
