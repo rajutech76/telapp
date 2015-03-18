@@ -25,7 +25,7 @@ public class AuroLogTest {
 		
 		log.info("Executing the test cases for AuroLogTest");
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("auro_persistance.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/auro_cxf.xml");
 		AuroLogTableHome auroLog = (AuroLogTableHome)context.getBean("auroLog");
 		
 		
