@@ -24,6 +24,10 @@ public class AuroSlotStatisticsHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	public AuroSlotStatisticsHome(){
+		
+	}
 
 	public void persist(AuroSlotStatistics transientInstance) {
 		log.debug("persisting AuroSlotStatistics instance");

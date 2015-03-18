@@ -23,6 +23,8 @@ public class AuroAuthHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	public AuroAuthHome(){}
 
 	public void persist(AuroAuth transientInstance) {
 		log.debug("persisting AuroAuth instance");

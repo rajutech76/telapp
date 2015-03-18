@@ -23,6 +23,10 @@ public class AuroDeviceRegHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	public AuroDeviceRegHome(){
+		
+	}
 
 	public void persist(AuroDeviceReg transientInstance) {
 		log.debug("persisting AuroDeviceReg instance");

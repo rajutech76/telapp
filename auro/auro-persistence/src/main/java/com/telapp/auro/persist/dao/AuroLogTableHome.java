@@ -27,6 +27,11 @@ public class AuroLogTableHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	public AuroLogTableHome(){
+		
+	}
+
 
 	public void persist(AuroLogTable transientInstance) {
 		log.debug("persisting AuroLogTable instance");

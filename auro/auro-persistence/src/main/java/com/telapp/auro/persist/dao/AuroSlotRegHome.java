@@ -23,6 +23,10 @@ public class AuroSlotRegHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	public AuroSlotRegHome(){
+		
+	}
 
 	public void persist(AuroSlotReg transientInstance) {
 		log.debug("persisting AuroSlotReg instance");
