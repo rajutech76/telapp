@@ -38,9 +38,12 @@ class Publisher {
 
     public static void main(String []args) throws Exception {
 
+    //	String hostId="85.119.83.194";
+    	String hostId="test.mosquitto.org";
+    	
         String user = env("ACTIVEMQ_USER", "admin");
         String password = env("ACTIVEMQ_PASSWORD", "password");
-        String host = env("ACTIVEMQ_HOST", "localhost");
+        String host = env("ACTIVEMQ_HOST", hostId);
         int port = Integer.parseInt(env("ACTIVEMQ_PORT", "1883"));
         final String destination = arg(args, 0, "auro/mqtt/topic");
 
@@ -58,8 +61,8 @@ class Publisher {
 
         MQTT mqtt = new MQTT();
         mqtt.setHost(host, port);
-        mqtt.setUserName(user);
-        mqtt.setPassword(password);
+     //   mqtt.setUserName(user);
+      //  mqtt.setPassword(password);
         
         
         System.out.println(" connecting to mqtt brocker ....");
