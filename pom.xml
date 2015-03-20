@@ -24,7 +24,8 @@
     <description>auro services </description>
 
     <modules>
-        <module>auro/auro-api</module>
+        <module>auro/auro-persistence</module>
+		<module>auro/auro-api</module>
     </modules>
 
 </project>
