@@ -38,8 +38,8 @@ class Publisher {
 
     public static void main(String []args) throws Exception {
 
-    //	String hostId="85.119.83.194";
-    	String hostId="test.mosquitto.org";
+    	String hostId="85.119.83.194";
+    	//String hostId="test.mosquitto.org";
     	
         String user = env("ACTIVEMQ_USER", "admin");
         String password = env("ACTIVEMQ_PASSWORD", "password");

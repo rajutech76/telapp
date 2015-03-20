@@ -33,7 +33,7 @@ public class MqttProcessor implements  Processor {
 	}
 	
 	private void saveData(MqttRequest mqTT){
-		log.info("executing save data :"+mqTT);
+		log.debug("executing save data :"+mqTT);
 		AuroLogTable auroTable = AuroConverter.convertToAuroConverter(mqTT);
 		auroLog.persist(auroTable);
 		
@@ -42,12 +42,12 @@ public class MqttProcessor implements  Processor {
 	
 	private MqttRequest convertToMQTT(String body){
 		
-		log.info("body : "+body);
+		//log.info("body : "+body);
 		
 		MqttRequest mqTT =new MqttRequest();
 		
 		String str[] =body.split("_");
-		if(str!=null ){
+		if(str!=null && str.length>3){
 		
 			mqTT.setDeviceName(str[0]);
 			mqTT.setDeviceMacId(str[1]);

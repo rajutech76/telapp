@@ -9,30 +9,30 @@
 
     <camel:camelContext xmlns="http://camel.apache.org/schema/spring">
         <camel:route>
-            <camel:from uri="mqtt:auro?host=tcp://test.mosquitto.org:1883&amp;
-            				subscribeTopicName=auro/mqtt/topic"/>
+            <camel:from uri="mqtt:auro?host=tcp://test.mosquitto.org:1883&amp;subscribeTopicName=auro/mqtt/topic"/>
             <camel:to uri="log:output"/>
+            <camel:process ref="mqTTProcessor"/>
             <camel:to uri="mock:result"/>
         </camel:route>
-
+	</camel:camelContext>
         <!--camel:route>
             <camel:from uri="mqtt:bar?host=ssl://localhost:1885&amp;subscribeTopicName=test/mqtt/topic"/>
             <camel:to uri="log:output"/>
             <camel:to uri="mock:sslResult"/>
         </camel:route-->
-    </camel:camelContext>
     
-   <!-- bean id ="mqTTProcessor" class="com.telapp.auro.camel.MqttProcessor"/>
-   <bean id="mqttRoute" class="com.telapp.auro.camel.MqttRouteBuilder">
+    
+   <bean id ="mqTTProcessor" class="com.telapp.auro.camel.MqttProcessor"/>
+   <!-- bean id="mqttRoute" class="com.telapp.auro.camel.MqttRouteBuilder">
    	 <constructor-arg ref="mqTTProcessor"/>
    </bean-->
      	
    	<!-- bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
 		
 		<property name="brokerURL" value="vm://auroBroker?create=false&amp;waitForStart=5000"/>
-	</bean>
+	</bean-->
 
-    <camel:camelContext id="defaultCamelContext">
+    <!-- camel:camelContext id="defaultCamelContext">
         <camel:routeBuilder ref="mqttRoute"/>
     </camel:camelContext-->
 	

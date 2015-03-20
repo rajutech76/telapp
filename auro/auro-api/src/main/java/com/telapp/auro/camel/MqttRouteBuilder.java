@@ -29,7 +29,7 @@ public class MqttRouteBuilder extends RouteBuilder{
 	{
 		log.info("Executing the method configure");
 		
-		from("mqtt:auro?subscribeTopicName=auro/mqtt/topic").
+		from("mqtt:auro?host=tcp://test.mosquitto.org:1883&amp;subscribeTopicName=auro/mqtt/topic").
 		transform(body().convertToString()).
 		to("log:output").
 		process(mqTTProcessor);
