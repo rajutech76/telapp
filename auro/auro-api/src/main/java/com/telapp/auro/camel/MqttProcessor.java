@@ -21,8 +21,15 @@ public class MqttProcessor implements  Processor {
 		
 		String body = exchange.getIn().getBody().toString();
 		
+		
 		log.info("Executing the method process : "+body
 				+" header :"+exchange.getIn().getHeaders());
+		
+		if(body.length()<10){
+			
+			log.warn("wrong input recived ");
+			return;
+		}
 		
 		
 		
@@ -47,7 +54,7 @@ public class MqttProcessor implements  Processor {
 		MqttRequest mqTT =new MqttRequest();
 		
 		String str[] =body.split("_");
-		if(str!=null && str.length>3){
+		if(str!=null){
 		
 			mqTT.setDeviceName(str[0]);
 			mqTT.setDeviceMacId(str[1]);
