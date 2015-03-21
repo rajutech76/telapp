@@ -51,7 +51,7 @@
 		
 		<!-- openshift config  -->
 		
-		<property name="url" value="jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/auroservice" />
+		<property name="url" value="jdbc:mysql://127.12.78.2:3306/auroservice" />
 		<property name="username" value="adminUmvCRsa" />
 		<property name="password" value="ssw-n1K6EVIV" />
 		
