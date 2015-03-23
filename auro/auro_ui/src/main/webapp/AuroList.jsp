@@ -1,13 +1,7 @@
-<%--
-Document : index
-Created on : Nov 5, 2012, 6:06:23 PM
-Author	 : mano
---%>
-
-<%@page import="java.util.List"%>
-<%@page import="org.app.service.LoginService"%>
-<%@page import="java.util.Date"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +17,8 @@ Author	 : mano
 		 </p>
 
 		 <table>
-			 <thead>
-				 <tr>
-				 
+			 
+				 <tr>				 
 					 <th>Log Id</th>
 					 <th>Device Name</th>
 					 <th>Device MAC Id</th>
@@ -33,27 +26,20 @@ Author	 : mano
 					 <th>Slot Status</th>	
 					 <th>Create Time</th>				
 				 </tr>
-			 </thead>
-			 <tbody>
-				 <%
-					 LoginService loginService = new LoginService();
-					 List<User> list = loginService.getListOfUsers();
-					 for (User u : list) {
-				 %>
+			
+				<c:forEach items="${auroList}" var="auro">
 				 <tr>
-					 <td><%=u.getUserId()%></td>
-					 <td><%=u.getFirstName()%></td>
-					 <td><%=u.getMiddleName()%></td>
-					 <td><%=u.getLastName()%></td>
-					 <td><%=u.getEmail()%></td>
-					 <td><%=u.getEmail()%></td>
+					 <td><c:out value="${auro.auroLogId}" /></td>
+					 <td><c:out value="${auro.deviceName}" /></td>
+					 <td><c:out value="${auro.deviceMacId}" /></td>
+					 <td><c:out value="${auro.slotname}" /></td>
+					 <td><c:out value="${auro.slotstatus}" /></td>
+					 <td><c:out value="${auro.createdTime}" /></td>				
 				 </tr>
-				 <%}%>
-			 <tbody>
+			</c:forEach>			
 		 </table>		
 		 <br/>
 	 </div>
-
 </center>		
 </body>
 </html>

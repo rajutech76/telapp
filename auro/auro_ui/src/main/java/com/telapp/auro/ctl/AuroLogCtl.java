@@ -33,9 +33,11 @@ public class AuroLogCtl extends AbstractController
 		
 		List<AuroLog> auroLog = demoAuroLogs();
 		
+		//call for webservices 
+		
 		log.info("Log list recived : "+auroLog);
 		
-		 return new ModelAndView( "auroLog", "auroList", auroLog);
+		 return new ModelAndView( "AuroList", "auroList", auroLog);
 	}
 	
 	

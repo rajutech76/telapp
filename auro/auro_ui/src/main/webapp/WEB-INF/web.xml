@@ -1,37 +1,44 @@
-<web-app id="WebApp_ID" version="2.4"
-	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
-	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
 
-	<display-name>Auro POC </display-name>
-	<welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-app_2_4.xsd"
+    version="2.4">
 	
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<!-- param-value>/WEB-INF/auro_cxf.xml</param-value-->
-		<param-value>classpath:META-INF/spring/auro_cxf.xml</param-value>
-		
-	</context-param>
+  <display-name>Auro POC </display-name>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/auromc-servlet.xml</param-value>
+   </context-param>
 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+  <listener>
+ 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <servlet>
+ 	<servlet-name>auromc</servlet-name>
+ 	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+ 	<load-on-startup>1</load-on-startup>
+  </servlet>
 
-	<servlet>
-		<servlet-name>auro</servlet-name>	
-		 <servlet-class>
-            org.apache.cxf.transport.servlet.CXFServlet
-        </servlet-class>
-        <load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>auro</servlet-name>
-		<url-pattern>/services/*</url-pattern>
-	</servlet-mapping>
-
-	
-
+  <servlet-mapping>
+ 	<servlet-name>auromc</servlet-name>
+ 	<url-pattern>*.htm</url-pattern>
+  </servlet-mapping>
+  
+  <taglib>
+    <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+    <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+  </taglib>
+  
+  <taglib>
+    <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+    <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+  </taglib>
+    
+  <welcome-file-list>
+	<welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
 </web-app>
