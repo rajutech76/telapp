@@ -3,6 +3,8 @@ package com.telapp.auro.persist.dao;
 // Generated 8 Mar, 2015 9:46:02 PM by Hibernate Tools 4.0.0
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -66,11 +68,23 @@ public class AuroLogTableHome {
 			throw re;
 		}
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<AuroLogTable> getAuroLogList(){
+		
+		List<AuroLogTable> list =null;
+		//sess.createQuery("from GravityEntity").list();
+		list =entityManager.createQuery("from AuroLogTable").getResultList();
+		return list;		 
+	}
 
 	public AuroLogTable findById(Integer id) {
 		log.debug("getting AuroLogTable instance with id: " + id);
 		try {
 			AuroLogTable instance = entityManager.find(AuroLogTable.class, id);
+			
+			
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {

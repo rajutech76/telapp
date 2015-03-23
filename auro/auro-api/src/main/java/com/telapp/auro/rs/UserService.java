@@ -13,7 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import com.telapp.auro.beans.User;
+import com.telapp.auro.models.User;
 
 /**
  * @author rajunair

@@ -3,11 +3,11 @@
 
  	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.telapp.auro</groupId>
-	<artifactId>auro-api</artifactId>
+	<artifactId>auro-ui</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 	
-	<name>auro-api</name>
+	<name>auro-ui</name>
 	<url>http://maven.apache.org</url>
 
   
@@ -46,15 +46,10 @@
 
   <dependencies>
   
-  	<dependency>
-			<groupId>com.telapp.auro</groupId>
-			<artifactId>auro-models</artifactId>
-			<version>${auro.version}</version>
-		</dependency>
   
   		<dependency>
 			<groupId>com.telapp.auro</groupId>
-			<artifactId>auro-persistence</artifactId>
+			<artifactId>auro-models</artifactId>
 			<version>${auro.version}</version>
 		</dependency>
   
@@ -83,11 +78,11 @@
             <version>${spring-version}</version>
         </dependency>
 
-        <!-- dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
-        </dependency-->
+        </dependency>
 		
 		<dependency>
             <groupId>javax.servlet</groupId>
@@ -95,24 +90,7 @@
             <version>1.2</version>
         </dependency>
 
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-core</artifactId>
-	  <version>${camel-version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-cxf</artifactId>
-	  <version>${camel-version}</version>
-    </dependency>
-    
-    <dependency>
-    	<groupId>org.apache.camel</groupId>
-    	<artifactId>camel-mqtt</artifactId>
-    	<version>${camel-version}</version>
-   		 <!-- use the same version as your Camel core version -->
-	</dependency>
+ 
 
     <dependency>
       <groupId>log4j</groupId>
@@ -121,61 +99,6 @@
     </dependency>
     
     
-    <!-- camel jms and activemq -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-jms</artifactId>
-			<version>${camel-version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-camel</artifactId>
-			<version>${activemq-version}</version>
-		</dependency>
-
-		<!-- embed ActiveMQ broker -->
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-broker</artifactId>
-			<version>${activemq-version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-spring</artifactId>
-			<version>${activemq-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-kahadb-store</artifactId>
-			<version>${activemq-version}</version>
-		</dependency>
-		
-		<dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-mqtt</artifactId>
-            <version>${activemq-version}</version>
-         </dependency>
-
-        <!-- ActiveMQ client -->
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-client</artifactId>
-			<version>${activemq-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-pool</artifactId>
-			<version>${activemq-version}</version>
-		</dependency>
-
-		<!-- xbean is required for ActiveMQ broker configuration in the spring xml file -->
-		<dependency>
-			<groupId>org.apache.xbean</groupId>
-			<artifactId>xbean-spring</artifactId>
-			<version>${xbean-version}</version>
-		</dependency>
     
 
     <!-- cxf using slf4j -->
@@ -207,14 +130,7 @@
       </exclusions>
     </dependency>
 
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-test-spring</artifactId>
-	  <version>${camel-version}</version>
-      <scope>test</scope>
-    </dependency>
- 
- 
+   
   	<dependency>
          <groupId>commons-httpclient</groupId>
         <artifactId>commons-httpclient</artifactId>
@@ -230,7 +146,7 @@
   </dependencies>
   
   <build>
-  		<finalName>auroservice</finalName>
+  		<finalName>auromc</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -286,7 +202,7 @@
 					<configuration>
 						<url>http://localhost:8080/manager</url>
 						<server>TomcatServer</server>
-						<path>/auroservice</path>
+						<path>/auromc</path>
 					</configuration>
 			</plugin>
             

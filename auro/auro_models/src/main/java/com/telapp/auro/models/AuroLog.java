@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.telapp.auro.beans;
+package com.telapp.auro.models;
 
 import java.util.Date;
 
@@ -22,6 +22,21 @@ public class AuroLog {
 	private Date createdTime;
 	
 	
+	
+	public AuroLog(){
+		
+	}
+	
+	public AuroLog(Integer auroLogId, String deviceName, String deviceMacId,
+			String slotname, Integer slotstatus, Date createdTime) {
+		super();
+		this.auroLogId = auroLogId;
+		this.deviceName = deviceName;
+		this.deviceMacId = deviceMacId;
+		this.slotname = slotname;
+		this.slotstatus = slotstatus;
+		this.createdTime = createdTime;
+	}
 	/**
 	 * @return the auroLogId
 	 */

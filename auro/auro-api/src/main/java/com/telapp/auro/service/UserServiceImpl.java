@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.telapp.auro.beans.User;
+import com.telapp.auro.models.User;
 import com.telapp.auro.rs.UserService;
 
 public class UserServiceImpl implements UserService{
