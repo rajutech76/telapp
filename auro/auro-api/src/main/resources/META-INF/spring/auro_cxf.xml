@@ -18,6 +18,7 @@
   <jaxrs:server address="/" id="connectionService">
    <jaxrs:serviceBeans>
          <bean class="com.telapp.auro.service.UserServiceImpl" id="userService"/>
+         <bean class="com.telapp.auro.service.AuroLogServiceImpl" id="auroList"/>
    </jaxrs:serviceBeans>
    <jaxrs:extensionMappings>
     <entry key="xml" value="application/xml"/>

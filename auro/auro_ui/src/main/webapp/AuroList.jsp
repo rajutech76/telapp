@@ -16,8 +16,8 @@
 		 <p>
 		 </p>
 
-		 <table>
-			 
+		 <table border="1" align="center" style="width:50%">
+			<thead> 
 				 <tr>				 
 					 <th>Log Id</th>
 					 <th>Device Name</th>
@@ -26,7 +26,8 @@
 					 <th>Slot Status</th>	
 					 <th>Create Time</th>				
 				 </tr>
-			
+			</thead>
+			<tbody>
 				<c:forEach items="${auroList}" var="auro">
 				 <tr>
 					 <td><c:out value="${auro.auroLogId}" /></td>
@@ -36,7 +37,8 @@
 					 <td><c:out value="${auro.slotstatus}" /></td>
 					 <td><c:out value="${auro.createdTime}" /></td>				
 				 </tr>
-			</c:forEach>			
+			</c:forEach>
+			</tbody>			
 		 </table>		
 		 <br/>
 	 </div>

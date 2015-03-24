@@ -6,6 +6,7 @@ package com.telapp.auro.ctl;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
@@ -31,11 +33,18 @@ public class AuroLogCtl extends AbstractController
 	{
 		log.info(" Executing the method handleRequestInternal");
 		
-		List<AuroLog> auroLog = demoAuroLogs();
+		//List<AuroLog> auroLog = demoAuroLogs();
 		
 		//call for webservices 
 		
+		RestTemplate restTemplate = new RestTemplate();
+		 String url="http://localhost:8080/auroservice/services/auroLog/list";
+		 List<AuroLog> auroLog=restTemplate.getForObject(url, List.class);
+		
+		 
+		
 		log.info("Log list recived : "+auroLog);
+		
 		
 		 return new ModelAndView( "AuroList", "auroList", auroLog);
 	}
