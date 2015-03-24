@@ -12,8 +12,12 @@ import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.telapp.auro.converter.AuroConverter;
 import com.telapp.auro.models.AuroLog;
+import com.telapp.auro.persist.dao.AuroLogTableHome;
+import com.telapp.auro.persist.entities.AuroLogTable;
 import com.telapp.auro.rs.AuroLogService;
 
 /**
@@ -23,6 +27,9 @@ import com.telapp.auro.rs.AuroLogService;
 public class AuroLogServiceImpl implements AuroLogService{
 	
 	private final static Logger log = LoggerFactory.getLogger(AuroLogServiceImpl.class);
+	
+	@Autowired  AuroLogTableHome  auroLog ;
+	
 	public AuroLogServiceImpl(){
 		
 	}
@@ -32,9 +39,24 @@ public class AuroLogServiceImpl implements AuroLogService{
 		
 		log.info("Executing the method getAuroLog ");
 		
-	    List<AuroLog> l=demoAuroLogs();
+	    List<AuroLog> l=null;
+	    		//demoAuroLogs();
+	    
+	    try{
+	    	
+	    		List<AuroLogTable> table =auroLog.getAuroLogList();
+	    		if(table!=null){
+	    			l=AuroConverter.convertToAuroLog(table);
+	    			
+	    		}else{
+	    			log.warn("no log data found ");
+	    		}
+	    	
+	    }catch(Exception exp){
+	    	log.error(exp.getMessage(),exp);
+	    }
 			
-	   Response.status(200).entity(new GenericEntity<List<AuroLog>>(l) {}).build();
+	  // Response.status(200).entity(new GenericEntity<List<AuroLog>>(l) {}).build();
 		 
 		
 		

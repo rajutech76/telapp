@@ -74,7 +74,7 @@ public class AuroLogTableHome {
 	public List<AuroLogTable> getAuroLogList(){
 		
 		List<AuroLogTable> list =null;
-		//sess.createQuery("from GravityEntity").list();
+		
 		list =entityManager.createQuery("from AuroLogTable").getResultList();
 		return list;		 
 	}
