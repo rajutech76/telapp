@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
@@ -32,6 +33,8 @@ public class UserServiceImpl implements UserService{
 					builder.type("application/xml");
 					builder.entity("<error>Category"+ exp.getMessage() +"</error>");
 					throw new WebApplicationException(builder.build());
+					
+					
 		}
 		
 		log.info("Finished executing the method validateUser "+flag);
@@ -61,14 +64,16 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<User> getUser() {
+	public Response getUser() {
 		// TODO Auto-generated method stub
 		User user = new User();
 		user.setPassword("user123");
 		user.setUserName("user");
 		List<User> list =new ArrayList<User>();
+		list.add(user);
 		
-		return list;
+		return Response.status(200).entity(new GenericEntity<List<User>>(list) {}).build();
+		//return list;
 	}
 
 	

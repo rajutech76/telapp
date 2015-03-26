@@ -41,6 +41,6 @@ public interface UserService {
 	@Path("/listUser")
 	@Produces({"application/xml","application/json"})
 	@Consumes({"application/xml","application/json"})
-	public List<User> getUser();
+	public Response getUser();
 	
 }

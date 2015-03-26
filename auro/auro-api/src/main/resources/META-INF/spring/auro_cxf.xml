@@ -11,10 +11,10 @@
   <import resource="classpath:META-INF/cxf/cxf.xml"/>
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
   
-  <import resource="classpath:auro_persistance.xml"/>
   <!-- import resource="classpath:META-INF/spring/amq_broker.xml"/-->
-  <import resource="classpath:META-INF/spring/auro-context.xml"/>
-  
+  <!-- import resource="classpath:auro_persistance.xml"/>
+  <import resource="classpath:META-INF/spring/auro-context.xml"/-->
+   
   <jaxrs:server address="/" id="connectionService">
    <jaxrs:serviceBeans>
          <bean class="com.telapp.auro.service.UserServiceImpl" id="userService"/>

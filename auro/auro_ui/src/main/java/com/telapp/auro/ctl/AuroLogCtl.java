@@ -6,6 +6,7 @@ package com.telapp.auro.ctl;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -14,11 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 import com.telapp.auro.models.AuroLog;
+import com.telapp.auro.models.impl.AuroLogList;
 
 /**
  * @author rajugopi
@@ -38,12 +45,24 @@ public class AuroLogCtl extends AbstractController
 		//call for webservices 
 		
 		RestTemplate restTemplate = new RestTemplate();
-		 String url="http://localhost:8080/auroservice/services/auroLog/list";
-		 List<AuroLog> auroLog=restTemplate.getForObject(url, List.class);
+		// String url="http://auroservice-telappauro.rhcloud.com/auroservice/services/auroLog/list";
+		String url ="http://localhost:8080/auroservice/services/auroLog/auroLogList";
 		
 		 
-		
-		log.info("Log list recived : "+auroLog);
+		 HttpHeaders headers = new HttpHeaders();
+		 headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
+
+		 HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+		 
+		 
+		 
+		 ResponseEntity<AuroLogList> respEntity=   restTemplate.exchange(url, HttpMethod.GET, entity, AuroLogList.class);
+		 
+		log.info(" Response entity :"+respEntity);
+		 
+		 AuroLogList log =respEntity.getBody();		 
+		 List<AuroLog> auroLog =log.getAuroLog();
+		 
 		
 		
 		 return new ModelAndView( "AuroList", "auroList", auroLog);
