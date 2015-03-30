@@ -15,6 +15,8 @@ public class UserServiceTest
 			System.out.println("Testing Rest endpoint");
 			
 			
+			//org.apache.cxf.jaxrs.provider.json.JSONProvider prov;
+			
 			RestTemplate restTemplate = new RestTemplate();
 			 String url="http://localhost:8080/auroservice/services/auroLog/auroLogList";
 			 List<AuroLog> auroLog=restTemplate.getForObject(url, List.class);

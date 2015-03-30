@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Repository;
 
 import com.telapp.auro.persist.entities.AuroAuth;
 
@@ -16,7 +17,7 @@ import com.telapp.auro.persist.entities.AuroAuth;
  * @see com.telapp.telquiz.entity.AuroAuth
  * @author Hibernate Tools
  */
-
+@Repository("auroUser")
 public class AuroAuthHome {
 
 	private static final Log log = LogFactory.getLog(AuroAuthHome.class);

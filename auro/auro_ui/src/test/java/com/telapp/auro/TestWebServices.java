@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.telapp.auro.ctl;
+package com.telapp.auro;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.telapp.auro.models.AuroLog;
+import com.telapp.auro.models.User;
 import com.telapp.auro.models.impl.AuroLogList;
 
 /**
@@ -27,6 +28,51 @@ public class TestWebServices {
 		
 		System.out.println(" Executing main TestWebServices");
 		
+			
+		getUserStatus();
+		
+		//get();
+		
+		System.out.println(" Finished Executing main TestWebServices");
+		
+	}
+	
+	
+	public static void getUserStatus(){
+		RestTemplate restTemplate = new RestTemplate();
+		// String url="http://auroservice-telappauro.rhcloud.com/auroservice/services/auroLog/list";
+		String url ="http://localhost:8080/auroservice/services/user/validateUser";
+		
+		User user =new User();
+		user.setPassword("password");
+		user.setUserName("login name");
+		
+		 
+		 HttpHeaders headers = new HttpHeaders();
+		 headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
+		 headers.setContentType(MediaType.APPLICATION_XML);
+
+		 HttpEntity<User> entity = new HttpEntity<User>(user, headers);
+		 
+		 
+		 
+		 ResponseEntity<String> resp=   restTemplate.exchange(url, HttpMethod.PUT, entity,
+				 String.class);
+		 
+		 
+		 
+		 
+		// restTemplate.exchange(url, method, requestEntity, responseType, uriVariables)
+		 
+		 System.out.println(resp);
+		System.out.println(" body : "+resp.getBody());
+		 
+	}
+	
+	
+	
+	
+	public  static void get(){
 		RestTemplate restTemplate = new RestTemplate();
 		// String url="http://auroservice-telappauro.rhcloud.com/auroservice/services/auroLog/list";
 		String url ="http://localhost:8080/auroservice/services/auroLog/auroLogList";
@@ -34,7 +80,8 @@ public class TestWebServices {
 		 
 		 HttpHeaders headers = new HttpHeaders();
 		 headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
-
+		 headers.setContentType(MediaType.APPLICATION_XML);
+		 
 		 HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 		 
 		 
@@ -54,12 +101,6 @@ public class TestWebServices {
 		// System.out.println("response body :"+list);
 		 				
 		 //List<AuroLog> auroLog=restTemplate.getForObject(url, List.class);
-		
-	
-		
-		
-		System.out.println(" Finished Executing main TestWebServices");
-		
 	}
 
 }

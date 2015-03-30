@@ -16,6 +16,21 @@ public class User {
 	private String password ;
 	private int userId;
 	
+	public User(){
+		
+	}
+	
+	
+	
+	public User(String userName, String password, int userId) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.userId = userId;
+	}
+
+
+
 	/**
 	 * @return the userName
 	 */
