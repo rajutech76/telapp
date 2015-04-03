@@ -5,6 +5,7 @@ package com.telapp.auro.persist.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -60,7 +61,25 @@ public class AuroAuthHome {
 			throw re;
 		}
 	}
-
+	
+	
+	 public AuroAuth findUser(AuroAuth auth) {
+		 AuroAuth user=null;
+         Query q = entityManager.createQuery("SELECT u FROM AuroAuth u WHERE u.username = :userName and u.password :passwd");
+         q.setParameter("userName", auth.getUsername());
+         q.setParameter("passwd", auth.getPassword());
+         
+         try{ 
+        	 user =(AuroAuth) q.getSingleResult();
+         }  
+         catch(Exception e){ 	          
+        	 log.error(e.getMessage(),e);
+         } 
+         
+         return user;
+  	}
+	
+		
 	public AuroAuth findById(Integer id) {
 		log.debug("getting AuroAuth instance with id: " + id);
 		try {
