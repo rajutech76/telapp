@@ -29,13 +29,50 @@ public class TestWebServices {
 		System.out.println(" Executing main TestWebServices");
 		
 			
-		getUserStatus();
+	//	getUserStatus();
+		
+		addUser();
 		
 		//get();
 		
 		System.out.println(" Finished Executing main TestWebServices");
 		
 	}
+	
+	public static void addUser(){
+		
+		RestTemplate restTemplate = new RestTemplate();
+		// String url="http://auroservice-telappauro.rhcloud.com/auroservice/services/auroLog/list";
+		String url ="http://localhost:8080/auroservice/services/user/addUser";
+		
+		User user =new User();
+		user.setPassword("auro123");
+		user.setUserName("auro");
+		
+		System.out.println(" user : "+user);
+		
+		
+		HttpHeaders headers = new HttpHeaders();
+		 headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
+		 headers.setContentType(MediaType.APPLICATION_XML);
+
+		 HttpEntity<User> entity = new HttpEntity<User>(user, headers);
+		 
+		 
+		 
+		 ResponseEntity<User> resp=   restTemplate.exchange(url, HttpMethod.POST, entity,
+				 User.class);
+		 
+		 
+		 
+		 
+		// restTemplate.exchange(url, method, requestEntity, responseType, uriVariables)
+		 
+		 System.out.println(resp);
+		System.out.println(" body : "+resp.getBody());
+		
+	}
+	
 	
 	
 	public static void getUserStatus(){

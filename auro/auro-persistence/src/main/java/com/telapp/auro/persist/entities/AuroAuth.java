@@ -96,4 +96,16 @@ public class AuroAuth implements java.io.Serializable {
 		this.createdUser = createdUser;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "AuroAuth [authId=" + authId + ", username=" + username
+				+ ", password=" + password + ", createTime=" + createTime
+				+ ", updateTime=" + updateTime + ", createdUser=" + createdUser
+				+ "]";
+	}
+
+	
 }

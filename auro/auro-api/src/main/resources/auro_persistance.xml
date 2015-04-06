@@ -45,15 +45,15 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		
-		<!-- property name="url" value="jdbc:mysql://127.0.0.1:3306/telapp_auro" />
+		<property name="url" value="jdbc:mysql://192.168.1.103:3306/telapp_auro" />
 		<property name="username" value="root" />
-		<property name="password" value="Lilies09" /-->
+		<property name="password" value="Lilies09" />
 		
 		<!-- openshift config  -->
 		
-		<property name="url" value="jdbc:mysql://127.12.78.2:3306/auroservice" />
+		<!-- property name="url" value="jdbc:mysql://127.12.78.2:3306/auroservice" />
 		<property name="username" value="adminUmvCRsa" />
-		<property name="password" value="ssw-n1K6EVIV" />
+		<property name="password" value="ssw-n1K6EVIV" /-->
 		
 	</bean>
 </beans>           

@@ -13,7 +13,7 @@
   
   <!-- import resource="classpath:META-INF/spring/amq_broker.xml"/-->
   <import resource="classpath:auro_persistance.xml"/>
-  <import resource="classpath:META-INF/spring/auro-context.xml"/>
+  <!-- import resource="classpath:META-INF/spring/auro-context.xml"/-->
    
   <jaxrs:server address="/" id="connectionService">
    <jaxrs:serviceBeans>

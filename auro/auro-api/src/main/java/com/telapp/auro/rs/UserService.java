@@ -38,7 +38,7 @@ public interface UserService {
 	@Path("/addUser")
 	@Produces({"application/xml","application/json"})
 	@Consumes({"application/xml","application/json"})
-	public Response addUser(@PathParam("addUser") User user);
+	public Response addUser(User user);
 	
 	@GET
 	@Path("/listUser")

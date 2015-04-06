@@ -3,6 +3,8 @@ package com.telapp.auro.persist.dao;
 // Generated 8 Mar, 2015 9:46:02 PM by Hibernate Tools 4.0.0
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -10,6 +12,8 @@ import javax.persistence.Query;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.telapp.auro.persist.entities.AuroAuth;
 
@@ -19,6 +23,7 @@ import com.telapp.auro.persist.entities.AuroAuth;
  * @author Hibernate Tools
  */
 @Repository("auroUser")
+@Transactional(propagation=Propagation.REQUIRED)
 public class AuroAuthHome {
 
 	private static final Log log = LogFactory.getLog(AuroAuthHome.class);
@@ -29,8 +34,9 @@ public class AuroAuthHome {
 	public AuroAuthHome(){}
 
 	public void persist(AuroAuth transientInstance) {
-		log.debug("persisting AuroAuth instance");
+		log.info("persisting AuroAuth instance : "+transientInstance);
 		try {
+		
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
@@ -78,6 +84,21 @@ public class AuroAuthHome {
          
          return user;
   	}
+	 
+	 @SuppressWarnings("unchecked")
+	public List<AuroAuth> getAllUser(int startIndex,int endindex)
+	 {
+		 log.debug(" executing getAllUser");		 
+		 List<AuroAuth> list =null;
+		 try{
+			 	list =entityManager.createQuery("from AuroAuth").getResultList();
+		 }catch(Exception exp){
+			 log.error(exp.getMessage(),exp);
+		 }
+		 
+		 log.debug("finished executing getAllUser");		 
+		 return list;
+	 }
 	
 		
 	public AuroAuth findById(Integer id) {

@@ -7,7 +7,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
@@ -15,9 +14,13 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.cxf.jaxrs.impl.ResponseBuilderImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.telapp.auro.converter.AuroConverter;
 import com.telapp.auro.models.AuroLog;
 import com.telapp.auro.models.impl.AuroLogList;
+import com.telapp.auro.persist.dao.AuroLogTableHome;
+import com.telapp.auro.persist.entities.AuroLogTable;
 import com.telapp.auro.rs.AuroLogService;
 
 /**
@@ -28,7 +31,7 @@ public class AuroLogServiceImpl implements AuroLogService{
 	
 	private final static Logger log = LoggerFactory.getLogger(AuroLogServiceImpl.class);
 	
-	//@Autowired  AuroLogTableHome  auroLog ;
+	@Autowired  AuroLogTableHome  auroLog ;
 	
 	public AuroLogServiceImpl(){
 		
@@ -40,9 +43,9 @@ public class AuroLogServiceImpl implements AuroLogService{
 		log.info("Executing the method getAuroLog ");
 		
 	    List<AuroLog> l=null;
-	    		l =demoAuroLogs();
+	    		//l =demoAuroLogs();
 	    
-	/*    try{
+	  try{
 	    	
 	    		List<AuroLogTable> table =auroLog.getAuroLogList();
 	    		if(table!=null){
@@ -55,7 +58,7 @@ public class AuroLogServiceImpl implements AuroLogService{
 	    }catch(Exception exp){
 	    	log.error(exp.getMessage(),exp);
 	    }
-	   */ 
+	  
 			
 	 // Response.status(200).entity(new GenericEntity<List<AuroLog>>(l) {}).build();
 		 
@@ -74,7 +77,7 @@ public class AuroLogServiceImpl implements AuroLogService{
 		ResponseBuilder builder = new ResponseBuilderImpl();
 		
 		try{		
-				List<AuroLog> l =demoAuroLogs();
+				List<AuroLog> l =getAuroLog();
 				AuroLogList list =new AuroLogList();
 				list.setAuroLog(l);
 				builder.entity(list);
