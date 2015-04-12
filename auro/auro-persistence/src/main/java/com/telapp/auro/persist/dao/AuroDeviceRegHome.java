@@ -3,6 +3,8 @@ package com.telapp.auro.persist.dao;
 // Generated 8 Mar, 2015 9:46:02 PM by Hibernate Tools 4.0.0
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,6 +12,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.telapp.auro.persist.entities.AuroDeviceReg;
+import com.telapp.auro.persist.entities.AuroSlotReg;
 
 /**
  * Home object for domain model class AuroDeviceReg.
@@ -73,5 +76,20 @@ public class AuroDeviceRegHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public List<AuroDeviceReg> getSlots(){
+		
+		 log.debug(" executing getSlots");		 
+		 List<AuroDeviceReg> list =null;
+		 try{
+			 	list =entityManager.createQuery("from AuroDeviceReg").getResultList();
+		 }catch(Exception exp){
+			 log.error(exp.getMessage(),exp);
+		 }
+		 
+		 log.debug("finished executing getAllUser");		 
+		 return list;
+		
 	}
 }

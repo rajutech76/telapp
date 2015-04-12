@@ -11,11 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.telapp.auro.beans.MqttRequest;
+import com.telapp.auro.models.AuroDeviceRegModel;
 import com.telapp.auro.models.AuroLog;
+import com.telapp.auro.models.AuroSlot;
 import com.telapp.auro.models.User;
 import com.telapp.auro.persist.entities.AuroAuth;
+import com.telapp.auro.persist.entities.AuroDeviceReg;
 import com.telapp.auro.persist.entities.AuroLogTable;
-import com.telapp.auro.service.AuroLogServiceImpl;
+import com.telapp.auro.persist.entities.AuroSlotReg;
 
 /**
  * @author rajunair
@@ -114,6 +117,131 @@ public class AuroConverter {
 		}
 		
 		return auth;
+	}
+	
+	
+	public static AuroSlotReg toAuroSlotReg(AuroSlot slot){		
+		AuroSlotReg reg =null;		
+		try{
+				if(slot==null){
+					throw new Exception("null data ");
+				}
+				
+				reg =new AuroSlotReg();
+				reg.setIdauroSlotReg(slot.getIdauroSlotReg());
+				reg.setSlotDescription(slot.getSlotDescription());
+				reg.setSlotLocation(slot.getSlotLocation());
+				reg.setSlotName(slot.getSlotName());
+			
+		}catch(Exception exp){
+			log.error(exp.getMessage(),exp);
+		}
+		return reg;
+		
+	}
+	
+	public static AuroSlot toAuroSlot(AuroSlotReg slot){
+		
+		AuroSlot reg =null;		
+		try{
+				if(slot==null){
+					throw new Exception("null data ");
+				}
+				
+				reg =new AuroSlot();
+				reg.setIdauroSlotReg(slot.getIdauroSlotReg());
+				reg.setSlotDescription(slot.getSlotDescription());
+				reg.setSlotLocation(slot.getSlotLocation());
+				reg.setSlotName(slot.getSlotName());
+			
+		}catch(Exception exp){
+			log.error(exp.getMessage(),exp);
+		}
+		return reg;
+		
+	}
+	
+	public static List<AuroSlot> toAuroSlotList(List<AuroSlotReg> list){
+		
+		List<AuroSlot> slot =null;
+		AuroSlot s  =null;
+		for(AuroSlotReg r :list){
+			
+			 s =toAuroSlot(r);
+			if(slot==null){
+				slot =new ArrayList<AuroSlot>();
+			}
+			slot.add(s);
+		}
+		return slot;
+		
+	}
+	
+	
+	public static AuroDeviceReg toAuroDeviceReg(AuroDeviceRegModel model){
+		
+		AuroDeviceReg reg = null;
+		
+		try{
+				if(model==null){
+					throw new Exception("null data ");
+				}
+				
+				AuroSlotReg sr = toAuroSlotReg(model.getAuroSlotReg());
+				reg = new AuroDeviceReg();
+				reg.setAuroSlotReg(sr);
+				reg.setDeviceMacId(model.getDeviceMacId());
+				reg.setDeviceName(model.getDeviceName());
+				reg.setIdauroDeviceReg(model.getIdauroDeviceReg());
+						
+			
+		}catch(Exception exp){
+			log.error(exp.getMessage(),exp);
+		}
+		
+		return reg;
+	}
+	
+	
+	public static AuroDeviceRegModel toAuroDeviceModel(AuroDeviceReg model){
+		AuroDeviceRegModel reg = null;
+		
+		try{
+				if(model==null){
+					throw new Exception("null data ");
+				}
+				
+				AuroSlot sr = toAuroSlot(model.getAuroSlotReg());
+				
+				reg = new AuroDeviceRegModel();
+				reg.setAuroSlotReg(sr);
+				reg.setDeviceMacId(model.getDeviceMacId());
+				reg.setDeviceName(model.getDeviceName());
+				reg.setIdauroDeviceReg(model.getIdauroDeviceReg());
+						
+			
+		}catch(Exception exp){
+			log.error(exp.getMessage(),exp);
+		}
+		
+		return reg;
+		
+	}
+	
+	
+	public static List<AuroDeviceRegModel> toDeviceModellist(List<AuroDeviceReg> list){
+		
+		List<AuroDeviceRegModel> slot =null;
+		AuroDeviceRegModel s  =null;
+		for(AuroDeviceReg r :list){
+			
+			 s =toAuroDeviceModel(r);
+			if(slot==null){
+				slot =new ArrayList<AuroDeviceRegModel>();
+			}
+			slot.add(s);
+		}
+		return slot;
 	}
 	
 	

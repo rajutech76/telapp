@@ -3,12 +3,15 @@ package com.telapp.auro.persist.dao;
 // Generated 8 Mar, 2015 9:46:02 PM by Hibernate Tools 4.0.0
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.telapp.auro.persist.entities.AuroAuth;
 import com.telapp.auro.persist.entities.AuroSlotReg;
 
 /**
@@ -60,6 +63,20 @@ public class AuroSlotRegHome {
 			log.error("merge failed", re);
 			throw re;
 		}
+	}
+	
+	public List<AuroSlotReg> getSlots(){
+		
+		 log.debug(" executing getSlots");		 
+		 List<AuroSlotReg> list =null;
+		 try{
+			 	list =entityManager.createQuery("from AuroSlotReg").getResultList();
+		 }catch(Exception exp){
+			 log.error(exp.getMessage(),exp);
+		 }
+		 
+		 log.debug("finished executing getAllUser");		 
+		 return list;
 	}
 
 	public AuroSlotReg findById(Integer id) {
