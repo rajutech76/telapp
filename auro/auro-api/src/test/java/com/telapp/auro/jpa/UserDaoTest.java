@@ -3,6 +3,8 @@
  */
 package com.telapp.auro.jpa;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -26,12 +28,12 @@ public class UserDaoTest {
 		
 		//
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("auro_persistance.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("auro_persistance_h2.xml");
 		AuroAuthHome auth = (AuroAuthHome)context.getBean("auroUser");
 		
 		User user =new User();
 		user.setPassword("passwd");
-		user.setUserName("guest");
+		user.setUserName("raju");
 		
 		AuroAuth au =AuroConverter.toAuroAuth(user);
 		
@@ -40,7 +42,16 @@ public class UserDaoTest {
 		
 		auth.persist(au);
 		
+		
+		List<AuroAuth> l = auth.getAllUser(0, 0);
+		
+		for(AuroAuth a:l){
+			log.info("data in tables -------->" +a.toString());
+		}
+		
 		log.info("Auro log persisted ");
 		
 	}
+	
+	
 }

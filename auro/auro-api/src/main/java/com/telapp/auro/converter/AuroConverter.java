@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.telapp.auro.beans.MqttRequest;
+
 import com.telapp.auro.models.AuroDeviceRegModel;
 import com.telapp.auro.models.AuroLog;
 import com.telapp.auro.models.AuroSlot;

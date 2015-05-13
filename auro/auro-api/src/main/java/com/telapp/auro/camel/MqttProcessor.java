@@ -34,6 +34,7 @@ public class MqttProcessor implements  Processor {
 		
 		
 		MqttRequest mqTT =convertToMQTT(body);
+		
 		saveData(mqTT);
 		log.info("Finished executing the method process");
 		
@@ -41,6 +42,7 @@ public class MqttProcessor implements  Processor {
 	
 	private void saveData(MqttRequest mqTT){
 		log.debug("executing save data :"+mqTT);
+		
 		AuroLogTable auroTable = AuroConverter.convertToAuroConverter(mqTT);
 		auroLog.persist(auroTable);
 		
